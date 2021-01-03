@@ -14,3 +14,8 @@ eksctl create cluster -f cluster.yaml
 eksctl create fargateprofile -f fargate.yaml
 ```
 
+## Delete EKS Environment
+
+```
+eksctl delete cluster --name=ekshello-cluster
+```
