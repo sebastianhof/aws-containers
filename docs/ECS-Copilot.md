@@ -1,39 +1,16 @@
-# Amazon Elastic Container Service (ECS) Walkthrough
+# ECS with Copilot CLI
 
-## Prerequisites 
+[Copilot CLI Documentation](https://aws.github.io/copilot-cli/)
 
-- Node.js
-- Homebrew
-
-
-```
-# Install jq
-brew install jq
-
-# Install copilot-cli
-brew install aws/tap/copilot-cli
-
-# Install cdk 
-npm install -g --force aws-cdk
-```
-
-## copilot Path
-
-### 1. Create ECS Environment
+## 1. Create ECS Environment
 
 Copilot will create environment as part of the application creation process. No steps required here
 
-### 2. Deploy applications
+## 2. Deploy applications
+
+### Deploy frontend service
 
 ```
-cd hello-backend
-copilot init
-
-- Application name: ecshello
-- Service type: Backend Service
-- Service name: ecshello-backend
-- Dockerfile: ./Dockerfile
-
 cd hello-frontend
 npm install
 npm run build
@@ -43,13 +20,28 @@ copilot init
 - Service type: Load Balanced Web Service
 - Service name: ecshello-frontend
 - Dockerfile: ./Dockerfile
-- No for test environemnt
-```
+- Select No for test environment
+
 
 copilot env init --name test --profile <profile> --app ecshello
 copilot svc deploy --name ecshello-frontend --env test
+```
 
-### 3. Interacting with app/env/svc
+### Deploy backend service
+
+> TBD
+
+<!-- ```
+cd hello-backend
+copilot init
+
+- Application name: ecshello
+- Service type: Backend Service
+- Service name: ecshello-backend
+- Dockerfile: ./Dockerfile
+``` -->
+
+## 3. Interacting with app/env/svc
 
 ```
 # Show apps
@@ -98,21 +90,6 @@ copilot svc status -n ecshello-<backend|frontend>
 
 ```
 copilot app delete 
-```
-
-
-## CDK path
-
-### 1. Create ECS Environment
-
-```
-cd ecs-cdk
-
-# synthesize cdk to cloud formation template 
-cdk synth
-
-# deploy 
-cdk deploy
 ```
 
 

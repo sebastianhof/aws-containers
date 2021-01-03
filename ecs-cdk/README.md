@@ -12,3 +12,21 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+
+# ECS with CDK
+
+[CDK Documentation](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)
+
+### 1. Create ECS Environment
+
+```
+# synthesize cdk to cloud formation template 
+cdk synth
+
+# deploy 
+cdk deploy
+```
+
+
+
+
