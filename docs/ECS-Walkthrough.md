@@ -26,22 +26,28 @@ Copilot will create environment as part of the application creation process. No 
 ### 2. Deploy applications
 
 ```
-cd todo-backend
+cd hello-backend
 copilot init
 
-- Application name: ecstodo
+- Application name: ecshello
 - Service type: Backend Service
-- Service name: ecstodo-backend
+- Service name: ecshello-backend
 - Dockerfile: ./Dockerfile
 
-cd todo-frontend
+cd hello-frontend
+npm install
+npm run build
 copilot init
 
-- Application name: ecstodo
+- Application name: ecshello
 - Service type: Load Balanced Web Service
-- Service name: ecstodo-frontend
+- Service name: ecshello-frontend
 - Dockerfile: ./Dockerfile
+- No for test environemnt
 ```
+
+copilot env init --name test --profile <profile> --app ecshello
+copilot svc deploy --name ecshello-frontend --env test
 
 ### 3. Interacting with app/env/svc
 
@@ -49,8 +55,8 @@ copilot init
 # Show apps
 copilot app ls
 
-# Show ecstodo application
-copilot app show ecstodo
+# Show ecshello application
+copilot app show ecshello
 
 # Show env
 copilot env ls
@@ -59,12 +65,12 @@ copilot env ls
 copilot env show -n test
 
 # Show service status
-copilot svc status -n ecstodo-backend
-copilot svc status -n ecstodo-frontend
+copilot svc status -n ecshello-backend
+copilot svc status -n ecshello-frontend
 
 # Show logs
-copilot svc logs -a ecstodo -n ecstodo-frontend --follow
-copilot svc logs -a ecstodo -n ecstodo-backend --follow
+copilot svc logs -a ecshello -n ecshello-frontend --follow
+copilot svc logs -a ecshello -n ecshello-backend --follow
 ```
 
 ### 4. Scale tasks
@@ -85,7 +91,7 @@ copilot svc deploy
 3. Verify
 
 ```
-copilot svc status -n ecstodo-<backend|frontend>
+copilot svc status -n ecshello-<backend|frontend>
 ```
 
 ### 5. Clean up
